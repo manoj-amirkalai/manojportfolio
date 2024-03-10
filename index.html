@@ -19,10 +19,46 @@
       href="assets/images/favicon.ico"
       type="image/x-icon"
     />
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
 
     <title>Manoj's Portfolio</title>
   </head>
   <body>
+    <script type="text/javascript">
+      (function(){
+         emailjs.init({
+           publicKey: "EnXADPPAxGV8YQpE7",
+         });
+      })();
+   </script>
+   <script>
+    function sendMail(){
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          let mail=document.getElementById('email').value;
+  
+  // Check if the email matches the regular expression
+  if(emailRegex.test(mail)) {
+    let  params = {
+          email: document.getElementById('email').value,
+          name:document.getElementById("name").value,
+          message:document.getElementById("message").value,}
+          emailjs.send("service_ek3l36o","template_t87qmbi",params)
+            .then((result)=>{
+              alert("Message Sent");
+              document.getElementById('email').value="";
+              document.getElementById('name').value="";
+              document.getElementById('message').value="";
+            }
+              ,(error)=>{alert("Error Sending Message")})
+  } else {
+    alert("Please enter a valid e-mail address")
+  }
+      
+    
+    }
+   </script>
     <div id="particles-js"></div>
     <div class="container">
       <!-- --------------- HEADER --------------- -->
@@ -286,20 +322,16 @@
             <div class="col ">
               <div class="form-control">
                 <div class="form-inputs">
-                  <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRzDsbCfWpTDtRqPkBWgQChCjRSsKqsFWnfdgjwXJvHrJpdSmmXlTsNRZjjXfcplQhxCkpld">
-                  <input  type="text" class="input-name" placeholder="Name" /></a>
-                  <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRzDsbCfWpTDtRqPkBWgQChCjRSsKqsFWnfdgjwXJvHrJpdSmmXlTsNRZjjXfcplQhxCkpld">
-                    <input type="text" class="input-mail" placeholder="Email" /></a>
+                  <input  id="name" type="text" name="name" class="input-name" placeholder="Name" required />
+                    <input  id="email" type="text" name="email" class="input-mail" placeholder="Email" required />
                 </div>
                 <div class="text-area">
-                  <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRzDsbCfWpTDtRqPkBWgQChCjRSsKqsFWnfdgjwXJvHrJpdSmmXlTsNRZjjXfcplQhxCkpld">
-                    <textarea placeholder="Message"></textarea></a>
+                    <textarea id="message" name="message" placeholder="Message" required></textarea>
                 </div>
                 <div class="form-button">
-                  <a  href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRzDsbCfWpTDtRqPkBWgQChCjRSsKqsFWnfdgjwXJvHrJpdSmmXlTsNRZjjXfcplQhxCkpld">
-                    <button class="btn" style="font-size: 17px;background-color: rgb(30, 159, 171);">
+                    <button onclick="sendMail()" class="btn" style="font-size: 17px;background-color: rgb(30, 159, 171);">
                     Send <i class="uil uil-message"></i>
-                  </button></a>
+                  </button>
                 </div>
               </div>
             </div>
