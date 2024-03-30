@@ -421,12 +421,7 @@ h3{
     gap: 20px;
     flex-wrap: wrap;
 }
-.project-box:hover{
-    border:2px solid gold;
-    width: 32%;
-    height: 325px;
 
-}
 .project-box{
     position: relative;
     display: flex;
