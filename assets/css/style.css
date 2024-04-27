@@ -442,7 +442,7 @@ h3{
 }.gitweb{
     display: flex;justify-content: center;
 }.gitweb a{
-    font-size: 17px;
+    font-size: 15px;
     text-decoration: none;
 }.content{
      font-size: 75%;
